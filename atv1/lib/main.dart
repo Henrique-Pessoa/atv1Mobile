@@ -31,15 +31,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _name = TextEditingController();
-  final TextEditingController _nota1 = TextEditingController();
-  final TextEditingController _nota2 = TextEditingController();
-  final TextEditingController _nota3 = TextEditingController();
-  var _median = 0.0;
-  var _pass = "";
-  Color textColor = Colors.red;
-  
-  
-  
+  final TextEditingController _age = TextEditingController();
+  final TextEditingController _adress = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 decoration:
-                    const InputDecoration(labelText: "Nota1: "),
+                    const InputDecoration(labelText: "Idade"),
                 style: const TextStyle(fontSize: 20),
-                controller: _nota1,
+                controller: _age,
               ),
             ),
             Padding(
@@ -76,36 +71,41 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 decoration:
-                    const InputDecoration(labelText: "Nota2: "),
+                    const InputDecoration(labelText: "Endereço"),
                 style: const TextStyle(fontSize: 20),
-                controller: _nota2,
+                controller: _adress,
             )),
               Padding(
               padding: const EdgeInsets.all(5),
               child: TextField(
                 keyboardType: TextInputType.number,
                 decoration:
-                    const InputDecoration(labelText: "Nota3: "),
+                    const InputDecoration(labelText: "Email"),
                 style: const TextStyle(fontSize: 20),
-                controller: _nota3,
+                controller: _email,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(5),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration:
+                    const InputDecoration(labelText: "Telefone"),
+                style: const TextStyle(fontSize: 20),
+                controller: _phone,
               ),
             ),
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    _median = (int.parse(_nota1.text) + int.parse(_nota2.text) + int.parse(_nota3.text)) /3;
-                    if(_median < 7){
-                        _pass = "Reprovado";
-                        textColor = Colors.red;
-                    }else{
-                      _pass = "Aprovado";
-                      textColor = Colors.green;
-                    }
+                    print(_name.text);
+                    print(_age.text);
+                    print(_adress.text);
+                    print(_email.text);
+                    print(_phone.text);
                   });
                 },
                 child: const Text("Enviar")),
-            Text("Media do aluno $_median"),
-            Text(_pass,style: TextStyle(color:textColor,))
           ],
         ),
       ),
