@@ -34,6 +34,13 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _nota1 = TextEditingController();
   final TextEditingController _nota2 = TextEditingController();
   final TextEditingController _nota3 = TextEditingController();
+  var _median = 0.0;
+  var _pass = "";
+  Color textColor = Colors.red;
+  
+  
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,14 +93,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    print(_name.text);
-                    print(_age.text);
-                    print(_adress.text);
-                    print(_email.text);
-                    print(_phone.text);
+                    _median = (int.parse(_nota1.text) + int.parse(_nota2.text) + int.parse(_nota3.text)) /3;
+                    if(_median < 7){
+                        _pass = "Reprovado";
+                        textColor = Colors.red;
+                    }else{
+                      _pass = "Aprovado";
+                      textColor = Colors.green;
+                    }
                   });
                 },
                 child: const Text("Enviar")),
+            Text("Media do aluno $_median"),
+            Text(_pass,style: TextStyle(color:textColor,))
           ],
         ),
       ),
